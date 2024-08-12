@@ -1,0 +1,57 @@
+version: '3.4'
+
+services:
+  eventos.api:
+    image: ${DOCKER_REGISTRY-}eventosapi
+    build:
+      context: .
+      dockerfile: Eventos.Api/Dockerfile
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=eventos.db;Database=EventosDb;User Id=sa;Password=Password01!;
+    depends_on:
+      - eventos.db
+    networks:
+      - app-network
+
+  eventos.db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - SA_PASSWORD=Password01!
+      - ACCEPT_EULA=Y
+    ports:
+      - "1436:1433"
+    volumes:
+      - dbdata:/var/opt/mssql
+      - ./init.sql:/init.sql
+    networks:
+      - app-network
+
+  api.gateway:
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+    ports:
+      - "5000:80"
+    volumes:
+      - ./Solution\ Items/ocelot.json:/app/ocelot.json
+    depends_on:
+      - eventos.api
+    networks:
+      - app-network
+
+  exec-db:
+    image: mcr.microsoft.com/mssql-tools
+    depends_on:
+      - eventos.db
+    entrypoint: ["sh", "-c", "sleep 30 && /opt/mssql-tools/bin/sqlcmd -S eventos.db -U sa -P Password01! -i /init.sql"]
+    volumes:
+      - ./init.sql:/init.sql
+    networks:
+      - app-network
+
+volumes:
+  dbdata:
+
+networks:
+  app-network:
+    driver: bridge

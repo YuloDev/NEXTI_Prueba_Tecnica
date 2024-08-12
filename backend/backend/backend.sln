@@ -5,6 +5,19 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventos.Api", "Eventos.Api\Eventos.Api.csproj", "{4DE969F0-340B-4984-BC41-DB43C95FDD87}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eventos", "Eventos", "{584EAB85-47CD-4AA8-AF0D-49B514507DB6}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C49F3897-9007-465D-AE13-93C418961854}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2F920ACC-E269-49F4-866C-BC0F50F9C387}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\ocelot.json = ..\..\..\ocelot.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{FE0E2BD6-3C6C-4AD1-82E8-F766220AD3EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{40585279-2BDF-4148-9F08-0B57941AA101}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +28,21 @@ Global
 		{4DE969F0-340B-4984-BC41-DB43C95FDD87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DE969F0-340B-4984-BC41-DB43C95FDD87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DE969F0-340B-4984-BC41-DB43C95FDD87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C49F3897-9007-465D-AE13-93C418961854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C49F3897-9007-465D-AE13-93C418961854}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C49F3897-9007-465D-AE13-93C418961854}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C49F3897-9007-465D-AE13-93C418961854}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40585279-2BDF-4148-9F08-0B57941AA101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40585279-2BDF-4148-9F08-0B57941AA101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40585279-2BDF-4148-9F08-0B57941AA101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40585279-2BDF-4148-9F08-0B57941AA101}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4DE969F0-340B-4984-BC41-DB43C95FDD87} = {584EAB85-47CD-4AA8-AF0D-49B514507DB6}
+		{40585279-2BDF-4148-9F08-0B57941AA101} = {FE0E2BD6-3C6C-4AD1-82E8-F766220AD3EC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {20F4E8D2-03CB-41D6-8521-E625A1E89127}

@@ -1,0 +1,8 @@
+FROM mcr.microsoft.com/mssql/server:2022-latest
+
+ENV SA_PASSWORD="Password01!"
+ENV ACCEPT_EULA="Y"
+
+COPY ./init.sql
+
+CMD /opt/mssql/bin/sqlservr & /bin/bash -c "sleep 30; /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Password01!' -i /init.sql"
